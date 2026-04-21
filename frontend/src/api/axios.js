@@ -1,10 +1,11 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api"
+  baseURL: process.env.NODE_ENV === 'production'
+    ? "https://coursian.onrender.com/api"
+    : "http://localhost:5000/api"
 });
 
-// attach token automatically
 API.interceptors.request.use((req) => {
   const user = JSON.parse(localStorage.getItem("userInfo"));
 
