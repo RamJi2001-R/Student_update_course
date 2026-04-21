@@ -1,9 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: process.env.NODE_ENV === 'production'
-    ? "https://coursian.onrender.com/api"
-    : "http://localhost:5000/api"
+  baseURL: "https://student-update-course-1.onrender.com/api"
 });
 
 API.interceptors.request.use((req) => {
