@@ -48,7 +48,10 @@ exports.loginStudent = async (req, res) => {
 
     if (student && (await bcrypt.compare(password, student.password))) {
       res.json({
-        token: generateToken(student._id)
+        token: generateToken(student._id),
+        name: student.name,
+        email: student.email,
+        course: student.course
       });
     } else {
       res.status(401).json({ message: "Invalid credentials" });
